@@ -1,0 +1,30 @@
+name: publicar
+
+on:
+  workflow_dispatch:
+    inputs:
+      versao:
+        description: 'Versão SemVer a publicar (ex.: 0.1.0-alfa.1)'
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  publicar:
+    name: Empacotar e publicar
+    runs-on: ubuntu-latest
+    environment: nuget
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+      - name: Testar
+        run: |
+          dotnet build -c Release
+          dotnet test --no-build -c Release
+      - name: Empacotar
+        run: dotnet pack --no-build -c Release -o pacotes -p:Version=${{ inputs.versao }}
+      - name: Publicar
+        run: dotnet nuget push "pacotes/*.nupkg" --source https://api.nuget.org/v3/index.json --api-key "${{ secrets.NUGET_API_KEY }}"

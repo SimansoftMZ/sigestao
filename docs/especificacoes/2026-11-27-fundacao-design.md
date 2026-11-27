@@ -22,7 +22,7 @@ Cada linha dá origem a um ADR em `docs/adr/`.
 
 | ID | Tema | Decisão |
 |---|---|---|
-| D1 | Licença | Licenciamento duplo: **AGPL-3.0** para todos, e **licença comercial** com partilha de receitas para quem quer comercializar sem abrir o seu código ou usar a marca siGestão. Contribuições externas exigem **CLA** assinado, para a Simansoft poder licenciar o código comercialmente. Só entram dependências com licença permissiva (MIT, Apache-2.0, BSD). Ver secção 16. |
+| D1 | Licença | Licenciamento duplo: **AGPL-3.0** (só a versão 3, identificador SPDX `AGPL-3.0-only`; a confirmar pelo responsável) para todos, e **licença comercial** com partilha de receitas para quem quer comercializar sem abrir o seu código ou usar a marca siGestão. Contribuições externas exigem **CLA** assinado, para a Simansoft poder licenciar o código comercialmente. Só entram dependências com licença permissiva (MIT, Apache-2.0, BSD). Ver secção 16. |
 | D2 | Plataforma | .NET 11 e C# 15 em todos os projectos. O .NET 11 é STS (suporte até Novembro de 2028); planear a subida para o .NET 12 LTS quando sair. |
 | D3 | AOT | Todas as bibliotecas são compatíveis com AOT (`IsAotCompatible`, analisadores de trimming e AOT a falhar o build, JSON por source generators, sem reflexão). Publicam em Native AOT os executáveis onde isso é suportado. Hosts com EF Core correm em JIT com ReadyToRun e modelo compilado enquanto o Native AOT do EF Core for experimental. |
 | D4 | SGBD | EF Core 11, code-first, um modelo único. **Nível 1:** PostgreSQL e SQL Server, testados em cada PR. **Nível 2:** MySQL e Oracle, que entram quando os respectivos provedores suportarem EF Core 11. O modelo fica pelo denominador comum: sem funcionalidades específicas de um SGBD. |
@@ -67,10 +67,10 @@ Outros implementadores criam a sua distro da mesma forma que o `sigestao-pro`: u
 ├─ .claude/
 │  ├─ agents/            (6 agentes)
 │  ├─ commands/fluxo.md
-│  └─ settings.json
+│  └─ settings.json     (criado pelo responsável do projecto)
 ├─ .devcontainer/devcontainer.json
 ├─ .github/
-│  ├─ workflows/         (ci, codeql, publicar, revisao-ia, cla)
+│  ├─ workflows/         (ci, codeql, publicar, revisao-ia; cla adiado)
 │  ├─ ISSUE_TEMPLATE/  pull_request_template.md
 │  └─ CODEOWNERS  dependabot.yml
 ├─ docs/
@@ -113,7 +113,7 @@ Runners alojados pelo GitHub (`ubuntu-latest`).
 | `ci.yml` | PR e push para `main` | Restaurar, compilar com avisos como erros (inclui analisadores AOT), `dotnet format --verify-no-changes`, testes com cobertura |
 | `codeql.yml` | PR, push para `main`, semanal | Análise estática de segurança |
 | `revisao-ia.yml` | PR | Revisão automática com a action do Claude, fixada por SHA. Exige um segredo configurado no repositório |
-| `cla.yml` | PR | Verifica se o autor assinou o CLA |
+| `cla.yml` | PR | Verifica se o autor assinou o CLA. **Adiado:** a action prevista está arquivada; até haver uma via mantida, a verificação é manual (caixa no modelo de PR e aprovação do dono do código) |
 | `publicar.yml` | Manual (`workflow_dispatch`) com versão | Empacota e publica os pacotes NuGet |
 
 - Protecção da `main`: PR obrigatório, `ci` verde, uma aprovação.
@@ -158,7 +158,7 @@ A base pode ser usada a partir de qualquer linguagem .NET (C#, F#, VB) e de qual
 5. Os dois testes exploratórios têm conclusões escritas nos ADR de D3, D4 e D7.
 6. O devcontainer compila e corre os testes sem instalações adicionais.
 7. `/fluxo` percorre todas as etapas numa alteração trivial.
-8. Um PR de teste mostra `ci`, `codeql` e `cla` a correr.
+8. Um PR de teste mostra `ci` e `codeql` a correr.
 
 ## 14. Riscos
 
@@ -166,7 +166,7 @@ A base pode ser usada a partir de qualquer linguagem .NET (C#, F#, VB) e de qual
 |---|---|
 | Provedores de MySQL e Oracle demoram a suportar EF Core 11 | Nível 2 não bloqueia o Nível 1; regras de portabilidade aplicadas desde o início |
 | Native AOT do EF Core continua experimental | Hosts com EF Core em JIT; reavaliar em cada versão |
-| PR externo aceite sem CLA | Verificação automática obrigatória no PR |
+| PR externo aceite sem CLA | Não se aceitam contribuições externas de código enquanto o CLA for rascunho; depois, aprovação obrigatória do dono do código e, quando houver via mantida, verificação automática no PR |
 | Marca siGestão por registar | Registo tratado pela Simansoft; a política de marca só é oponível depois dele |
 | Dependência com licença incompatível | Regra em `CONTRIBUTING.md` e na revisão de PR |
 | .NET 11 perde suporte em Novembro de 2028 | Subida para .NET 12 LTS planeada no `ROADMAP.md` |

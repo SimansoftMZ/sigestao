@@ -1,0 +1,39 @@
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  compilar-e-testar:
+    name: Compilar e testar
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+      - name: Restaurar
+        run: dotnet restore
+      - name: Compilar
+        run: dotnet build --no-restore -c Release
+      - name: Verificar formatação
+        run: dotnet format --no-restore --verify-no-changes
+      - name: Testar
+        run: dotnet test --no-build -c Release --coverlet --coverlet-output-format cobertura
+      - name: Guardar cobertura
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cobertura
+          path: '**/TestResults/coverage.cobertura.*.xml'
+          if-no-files-found: ignore

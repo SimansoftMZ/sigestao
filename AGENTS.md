@@ -33,8 +33,8 @@ Toda a documentação, comentários, mensagens de commit e de erro são em **por
 
 - O plano aprovado pelo humano é o contrato das etapas seguintes. Aprova-se uma vez.
 - Cada agente recebe só o que precisa: o caminho do plano e, quando revê, o diff.
-- Um commit por etapa: `wip(<tema>): <etapa>`.
-- No máximo dois ciclos de correcção entre revisão e código; ao terceiro, pára e pergunta ao humano.
+- Um commit por etapa que altera ficheiros: `wip(<tema>): <etapa>`.
+- No máximo dois regressos ao código, por suites falhadas ou por achados de revisão; ao terceiro, pára e pergunta ao humano.
 
 ## Papéis
 

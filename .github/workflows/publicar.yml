@@ -16,6 +16,11 @@ jobs:
     runs-on: ubuntu-latest
     environment: nuget
     steps:
+      - name: Validar versão
+        env:
+          VERSAO: ${{ inputs.versao }}
+        run: |
+          echo "$VERSAO" | grep -Eq '^[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.-]+)?$' || { echo "Versão inválida: $VERSAO"; exit 1; }
       - uses: actions/checkout@v4
       - uses: actions/setup-dotnet@v4
         with:
@@ -25,6 +30,10 @@ jobs:
           dotnet build -c Release
           dotnet test --no-build -c Release
       - name: Empacotar
-        run: dotnet pack --no-build -c Release -o pacotes -p:Version=${{ inputs.versao }}
+        env:
+          VERSAO: ${{ inputs.versao }}
+        run: dotnet pack --no-build -c Release -o pacotes -p:Version="$VERSAO"
       - name: Publicar
-        run: dotnet nuget push "pacotes/*.nupkg" --source https://api.nuget.org/v3/index.json --api-key "${{ secrets.NUGET_API_KEY }}"
+        env:
+          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+        run: dotnet nuget push "pacotes/*.nupkg" --source https://api.nuget.org/v3/index.json --api-key "$NUGET_API_KEY" --skip-duplicate

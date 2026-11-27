@@ -9,7 +9,7 @@ O siGestão é código aberto, mas quem o comercializa deve partilhar receitas c
 
 ## Decisão
 
-Licenciamento duplo: **AGPL-3.0** para todos, e **licença comercial** com partilha de receitas para quem quer comercializar sem abrir o seu código ou usar a marca siGestão. Contribuições externas exigem **CLA** assinado, para a Simansoft poder licenciar o código comercialmente. Só entram dependências com licença permissiva (MIT, Apache-2.0, BSD).
+Licenciamento duplo: **AGPL-3.0-only** para todos, e **licença comercial** com partilha de receitas para quem quer comercializar sem abrir o seu código ou usar a marca siGestão. Aplica-se só a versão 3 da licença, sem a cláusula «ou posterior». Contribuições externas exigem **CLA** assinado, para a Simansoft poder licenciar o código comercialmente. Só entram dependências com licença permissiva (MIT, Apache-2.0, BSD).
 
 O modelo comercial resume-se assim:
 

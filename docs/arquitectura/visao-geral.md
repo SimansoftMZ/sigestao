@@ -42,6 +42,7 @@ flowchart TD
         modulos[Módulos base]
         contratos[Contratos e cliente HTTP]
         comunidade[Distro Comunidade]
+        migracoesCom[Migrações por SGBD]
     end
     subgraph pro["sigestao-pro (proprietária)"]
         host[Host siGestão Pro]
@@ -50,6 +51,7 @@ flowchart TD
     end
     nucleo --> modulos
     modulos --> comunidade
+    comunidade --> migracoesCom
     base -- pacotes NuGet --> host
     proprios --> host
     host --> migracoes

@@ -10,5 +10,18 @@
   </PropertyGroup>
   <PropertyGroup Condition="!$(MSBuildProjectName.EndsWith('.Tests'))">
     <IsAotCompatible>true</IsAotCompatible>
+    <Authors>Simansoft</Authors>
+    <Description>Base do siGestão, ERP de código aberto da Simansoft.</Description>
+    <PackageLicenseExpression>AGPL-3.0-only</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/SimansoftMZ/sigestao</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/SimansoftMZ/sigestao</RepositoryUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
+  <ItemGroup Condition="!$(MSBuildProjectName.EndsWith('.Tests'))">
+    <None Include="$(MSBuildThisFileDirectory)README.md" Pack="true" PackagePath="\" Visible="false" />
+    <AssemblyAttribute Include="System.CLSCompliantAttribute">
+      <_Parameter1>true</_Parameter1>
+      <_Parameter1_IsLiteral>true</_Parameter1_IsLiteral>
+    </AssemblyAttribute>
+  </ItemGroup>
 </Project>

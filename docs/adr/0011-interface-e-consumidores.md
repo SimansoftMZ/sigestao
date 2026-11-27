@@ -21,7 +21,7 @@ A base pode ser usada a partir de qualquer linguagem .NET (C#, F#, VB) e de qual
 ## Alternativas consideradas
 
 - **Escolher já uma tecnologia de interface:** rejeitado; a escolha faz-se em especificação própria.
-- **Suportar .NET Framework com `netstandard2.0`:** rejeitado.
+- **Suportar .NET Framework com `netstandard2.0`:** rejeitado; o responsável decidiu suportar só .NET moderno, e `netstandard2.0` impediria o uso das API e dos analisadores de AOT actuais.
 
 ## Consequências
 

@@ -19,7 +19,7 @@ dotnet format --verify-no-changes
 
 1. Crie uma branch `<tipo>/<tema>`.
 2. Faça commits no formato `tipo(âmbito): descrição`, em português.
-3. Abra um pull request. O check `ci` tem de estar verde antes do merge.
+3. Abra um pull request. O check «Compilar e testar» tem de estar verde antes do merge.
 
 ## Regras
 
@@ -30,7 +30,7 @@ dotnet format --verify-no-changes
 
 ## CLA
 
-O CLA é obrigatório para contribuições externas. Leia o [CLA](CLA.md) e assine comentando no pull request a frase indicada nesse ficheiro; o dono do código confirma a assinatura antes do merge. A razão está em [LICENCIAMENTO.md](LICENCIAMENTO.md).
+O CLA é obrigatório para contribuições externas. Leia o [CLA](CLA.md) e assine comentando no pull request a frase indicada nesse ficheiro; o dono do código confirma a assinatura antes do merge. A razão está em [LICENCIAMENTO.md](LICENCIAMENTO.md). Enquanto o CLA estiver em rascunho, não se aceitam contribuições externas de código.
 
 ## Decisões de arquitectura
 

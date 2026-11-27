@@ -13,8 +13,8 @@ Multi-empresa por filtro global, chaves `Guid` versão 7, numeração de documen
 
 ## Alternativas consideradas
 
-- **Chaves naturais compostas:** rejeitadas.
-- **Filtro de empresa manual:** rejeitado.
+- **Chaves naturais compostas:** rejeitadas; complicam as chaves estrangeiras e a portabilidade entre SGBD.
+- **Filtro de empresa manual:** rejeitado; no V1 repetia-se em cada query e arrisca fuga de dados entre empresas.
 
 ## Consequências
 

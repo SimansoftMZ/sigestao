@@ -6,6 +6,7 @@
 - Sem prefixos de tipo (`Tb`) nem `_` em nomes de tabelas.
 - Raiz dos namespaces e pacotes: `Simansoft.SiGestao`.
 - Documentação, comentários, mensagens de commit e de erro em português de Moçambique.
+- Toda a API pública tem comentário XML de documentação; o build falha sem ele (CS1591).
 - O [glossário](glossario.md) fixa o termo de cada conceito, para não haver sinónimos no código.
 
 ## Exemplos

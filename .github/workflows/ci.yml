@@ -11,12 +11,15 @@ permissions:
 
 concurrency:
   group: ci-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   compilar-e-testar:
     name: Compilar e testar
     runs-on: ubuntu-latest
+    env:
+      DOTNET_CLI_TELEMETRY_OPTOUT: 1
+      TESTINGPLATFORM_TELEMETRY_OPTOUT: 1
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-dotnet@v4
@@ -36,4 +39,4 @@ jobs:
         with:
           name: cobertura
           path: '**/TestResults/coverage.cobertura.*.xml'
-          if-no-files-found: ignore
+          if-no-files-found: warn

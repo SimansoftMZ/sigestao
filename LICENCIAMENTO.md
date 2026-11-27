@@ -9,17 +9,19 @@ Pode usar, estudar, modificar e distribuir o siGestão, incluindo para fins come
 - se distribuir uma versão modificada, ou um produto construído sobre o siGestão, entrega o código-fonte completo sob a mesma licença;
 - se disponibilizar uma versão modificada como serviço em rede, oferece o código-fonte aos utilizadores desse serviço.
 
+Aplica-se só a versão 3 da licença (identificador SPDX `AGPL-3.0-only`).
+
 O texto integral está em [LICENSE](LICENSE).
 
 ## 2. Licença comercial (acordo de parceiro)
 
 Quem quer comercializar o siGestão sem publicar o seu código celebra um acordo de parceiro com a Simansoft, que inclui partilha de receitas.
 
-Contacto: <contacto comercial fornecido pelo responsável do projecto>
+Contacto: `<contacto comercial fornecido pelo responsável do projecto>`
 
 ## 3. Marca
 
-«siGestão» e o respectivo logótipo são marcas da Simansoft. Só parceiros com acordo podem comercializar produtos ou serviços com este nome ou logótipo. Pode dizer, com verdade, que o seu produto é «baseado no siGestão».
+«siGestão» e o respectivo logótipo são marcas da Simansoft. Só parceiros com acordo podem comercializar produtos ou serviços com este nome ou logótipo. Pode dizer, com verdade, que o seu produto é «baseado no siGestão». Quem cumprir a AGPL por inteiro e não usar a marca pode comercializar sem acordo.
 
 ## 4. Contribuições
 

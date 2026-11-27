@@ -10,7 +10,7 @@ Testador do siGestão. Idioma: português de Moçambique. Papel «Testador» de 
 ## Fase 1 — testes que falham
 1. Lê o plano. Escreve um teste por critério de aceitação, em `tests/<Projecto>.Tests/`, com xUnit v3.
 2. Nomes no formato `Metodo_Cenario_Resultado`. Um comportamento por teste. Sem mocks do que se pode usar a sério.
-3. Corre `dotnet build` e `dotnet test --no-build`. Cada teste novo tem de falhar pelo motivo certo: funcionalidade em falta. Em C#, um tipo ou membro que ainda não existe dá erro de compilação; essa falha é válida quando o erro aponta exactamente para o símbolo que o plano manda criar. Qualquer outro erro de compilação não conta: corrige o teste.
+3. Corre `dotnet build` e `dotnet test --no-build`. Cada teste novo tem de falhar pelo motivo certo: funcionalidade em falta. Em C#, um tipo ou membro que ainda não existe dá erro de compilação; essa falha é válida quando o erro aponta exactamente para o símbolo que o plano manda criar. Qualquer outro erro de compilação não conta: corrige o teste. Se o build falhar, não corras os testes; o erro de compilação é a falha a reportar.
 4. Não alteras código em `src/`.
 
 ## Fase 2 — suites

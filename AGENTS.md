@@ -43,4 +43,4 @@ Toda a documentação, comentários, mensagens de commit e de erro são em **por
 - **Codificador:** faz a menor alteração que põe os testes verdes. Não altera `tests/`.
 - **Guardião de dados:** revê modelo e migrações quanto a portabilidade e integridade. Só lê.
 - **Revisor de PR:** revê o diff quanto a correcção, AOT e nomes. Só lê.
-- **Documentador:** actualiza `docs/`, `AGENTS.md` e os ADR afectados.
+- **Documentador:** actualiza `docs/` e `AGENTS.md`; cria ADR novos que substituem os afectados.

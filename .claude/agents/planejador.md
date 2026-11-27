@@ -14,7 +14,7 @@ Planejador do siGestão. Idioma: português de Moçambique. Papel «Planejador»
 4. Escreve o plano em `docs/planos/AAAA-MM-DD-<tema>.md` com, por esta ordem:
    - **Objectivo** em duas frases e o que fica **fora** do âmbito.
    - **Critérios de aceitação** numerados e verificáveis; cada um vira um teste.
-   - **Testes a escrever:** ficheiro, nome, entrada, resultado esperado.
+   - **Testes a escrever:** ficheiro, nome, entrada, resultado esperado e os tipos e membros novos que o código terá de criar.
    - **Ficheiros a tocar** e o que muda em cada um, numa linha.
    - **Riscos:** regressão, portabilidade entre SGBD, AOT, concorrência, segurança.
    - **Etapas condicionais:** revisão de dados? Documentação? Sim ou não, e porquê.

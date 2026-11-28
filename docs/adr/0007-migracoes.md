@@ -33,6 +33,6 @@ dotnet ef migrations add Inicial --startup-project Host --project Migracoes.SqlS
 
 Ambos terminaram com «Build succeeded.» e «Done.», sem erros nem avisos. Cada projecto ficou com a sua pasta `Migrations` (`*_Inicial.cs`, `*_Inicial.Designer.cs` e `ProvaDbContextModelSnapshot.cs`). O `Host` não precisou de referências adicionais.
 
-Também funcionaram `dotnet ef migrations script` nos dois provedores (sem base de dados) e `dotnet ef database update` no PostgreSQL. O SQL gerado difere entre provedores (tipos, aspas, bloco de criação do histórico, `GO` só no SQL Server), o que confirma a rejeição de um conjunto único de migrações. O `database update` no SQL Server não foi verificado: o contentor não arrancou em ARM64 por emulação (ver ADR 0004).
+Também funcionaram `dotnet ef migrations script` nos dois provedores (sem base de dados) e `dotnet ef database update` no PostgreSQL. O SQL gerado difere entre provedores (tipos, aspas, bloco de criação do histórico, `GO` só no SQL Server), o que confirma a rejeição de um conjunto único de migrações. O `database update` do projecto `Migracoes.SqlServer` aplicou-se no Azure SQL Edge (ARM64). No SQL Server 2022 não foi verificado: o contentor não arrancou em ARM64 por emulação (ver ADR 0004).
 
 Fora do que o teste cobriu: migrações com vários módulos a contribuir para o mesmo modelo, e a actualização de uma base já existente. Não foram exercitadas.

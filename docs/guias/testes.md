@@ -7,6 +7,8 @@
 
 Não se usa SQLite nem provedor em memória como substituto do SGBD. A escolha de SGBD está em [ADR 0004](../adr/0004-sgbd.md).
 
+Em máquinas ARM64 a imagem do SQL Server não arranca em Docker. Aí, os testes de integração correm localmente só sobre PostgreSQL; o SQL Server verifica-se no CI.
+
 ## Como correr
 
 | Acção | Comando |

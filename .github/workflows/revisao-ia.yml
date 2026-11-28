@@ -158,8 +158,23 @@ jobs:
           OUTCOME: ${{ steps.claude-review.outcome }}
         run: |
           set -euo pipefail
+          # Rede de segurança: nenhum token sai num comentário nem no log, mesmo que uma
+          # injecção o tenha feito chegar à resposta (o .git/ já está negado ao Claude).
+          sem_tokens() {
+            sed -E \
+              -e 's#x-access-token:[^@[:space:]]+@#x-access-token:***@#g' \
+              -e 's#gh[pousr]_[A-Za-z0-9]{20,}#***#g' \
+              -e 's#github_pat_[A-Za-z0-9_]{20,}#***#g'
+          }
           if [ "$OUTCOME" != "success" ]; then
             resumo="A revisão não chegou ao fim ($OUTCOME). Ver o log: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+            # A action esconde o motivo da falha. Fica aqui no log (não no PR), só o início.
+            if [ -n "$EXEC" ] && [ -f "$EXEC" ]; then
+              echo "Motivo da falha:"
+              { jq -r '[.[] | select(.type == "result")] | last | .result // empty' "$EXEC" 2>/dev/null || true; } \
+                | head -c 500 | sem_tokens
+              echo
+            fi
           elif [ -z "$EXEC" ] || [ ! -f "$EXEC" ]; then
             # Sucesso sem execução: a action saltou-se a si própria (p.ex. o workflow do PR
             # difere do da main, o que ela recusa). Nada a publicar.
@@ -170,11 +185,6 @@ jobs:
             resumo=$(jq -r '[.[] | select(.type == "result")] | last | .result // empty' "$EXEC" 2>/dev/null || true)
           fi
           [ -n "$resumo" ] || resumo="(A revisão terminou sem resumo; ver o log do workflow.)"
-          # Rede de segurança: nenhum token sai num comentário, mesmo que uma injecção o tenha
-          # feito chegar à resposta (o .git/ já está negado ao Claude).
-          resumo=$(printf '%s' "$resumo" | sed -E \
-            -e 's#x-access-token:[^@[:space:]]+@#x-access-token:***@#g' \
-            -e 's#gh[pousr]_[A-Za-z0-9]{20,}#***#g' \
-            -e 's#github_pat_[A-Za-z0-9_]{20,}#***#g')
+          resumo=$(printf '%s' "$resumo" | sem_tokens)
           printf '### Revisão Claude — commit %s\n\n%s\n' "${HEAD_SHA:0:8}" "$resumo" > "$RUNNER_TEMP/resumo.md"
           gh pr comment "$PR" --repo "$GITHUB_REPOSITORY" --body-file "$RUNNER_TEMP/resumo.md"

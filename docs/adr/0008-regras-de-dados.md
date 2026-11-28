@@ -18,4 +18,4 @@ Multi-empresa por filtro global, chaves `Guid` versão 7, numeração de documen
 
 ## Consequências
 
-A compatibilidade do filtro global com o modelo compilado depende do resultado do ADR `0003-aot.md`.
+O EF Core 11.0.0 não gera modelo compilado para um modelo com filtro global. O filtro mantém-se e os hosts constroem o modelo no arranque (ver ADR `0003-aot.md`).

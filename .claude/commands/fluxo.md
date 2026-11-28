@@ -9,7 +9,7 @@ Executa o fluxo de `AGENTS.md` para: $ARGUMENTS
 2. **Testes.** Chama `testador` (fase 1) com o caminho do plano. Commit `wip(<tema>): testes`.
 3. **Código.** Chama `codificador` com o caminho do plano. Se o `codificador` contestar um teste, pára e pergunta ao humano. Commit `wip(<tema>): código`.
 4. **Suites.** Chama `testador` (fase 2). Se falhar, volta ao passo 3.
-5. **Diff.** Grava `git diff main...HEAD` e a lista de ficheiros na pasta temporária da sessão.
+5. **Diff.** Corre `git fetch origin` e grava `git diff origin/main...HEAD` e a lista de ficheiros na pasta temporária da sessão. Não uses a `main` local: pode estar desactualizada.
 6. **Revisão de dados.** Se o diff toca em `DbContext`, configurações de entidades ou migrações, chama `guardiao-dados` com o caminho do diff.
 7. **Revisão.** Chama `revisor-pr` com o caminho do diff.
 8. Achados do `guardiao-dados` e achados N1 ou N2 do `revisor-pr` voltam ao passo 3.

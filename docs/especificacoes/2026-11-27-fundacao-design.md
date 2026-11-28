@@ -113,7 +113,7 @@ Runners alojados pelo GitHub (`ubuntu-latest`).
 | `ci.yml` | PR e push para `main` | Restaurar, compilar com avisos como erros (inclui analisadores AOT), `dotnet format --verify-no-changes`, testes com cobertura |
 | `codeql.yml` | PR, push para `main`, semanal | Análise estática de segurança |
 | `revisao-ia.yml` | PR | Revisão automática com a action do Claude, fixada por SHA. Exige um segredo configurado no repositório |
-| `cla.yml` | PR | Verifica se o autor assinou o CLA. **Adiado:** a action prevista está arquivada; até haver uma via mantida, a verificação é manual (caixa no modelo de PR e aprovação do dono do código) |
+| `cla.yml` | PR | Verifica se o autor assinou o CLA. **Adiado:** a action prevista está arquivada; até haver uma via mantida, a verificação é manual (caixa no modelo de PR e aprovação do dono do código). O responsável decidiu, em 2026-11-28, mantê-la manual por agora |
 | `publicar.yml` | Manual (`workflow_dispatch`) com versão | Empacota e publica os pacotes NuGet |
 
 - Protecção da `main`: PR obrigatório, `ci` verde, uma aprovação.

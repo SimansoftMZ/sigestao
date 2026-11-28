@@ -17,7 +17,7 @@ O texto integral está em [LICENSE](LICENSE).
 
 Quem quer comercializar o siGestão sem publicar o seu código celebra um acordo de parceiro com a Simansoft, que inclui partilha de receitas.
 
-Contacto: `<contacto comercial fornecido pelo responsável do projecto>`
+Contacto: <comercial@simansoft.co.mz>
 
 ## 3. Marca
 

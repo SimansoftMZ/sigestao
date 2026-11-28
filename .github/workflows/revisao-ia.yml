@@ -61,7 +61,7 @@ jobs:
 
       - name: Checkout repository
         if: steps.actual.outputs.actual == 'true'
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           # O commit do PR, não o de merge que o pull_request usa por omissão: os ficheiros e
           # as linhas que o Claude lê batem com .revisao/diff.patch e com os comentários inline.

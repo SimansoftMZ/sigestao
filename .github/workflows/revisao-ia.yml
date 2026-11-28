@@ -95,7 +95,7 @@ jobs:
       - name: Run Claude Code Review
         if: steps.actual.outputs.actual == 'true'
         id: claude-review
-        uses: anthropics/claude-code-action@46a42b43239748e5b25771606bf1f551c3b1b517
+        uses: anthropics/claude-code-action@4411a9e9b0283becf4b924f7bce360fd7756c78c
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           # Com esta opção a action configura o git com um credential helper que lê $GH_TOKEN,

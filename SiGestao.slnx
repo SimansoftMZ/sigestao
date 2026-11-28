@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Simansoft.SiGestao.Nucleo/Simansoft.SiGestao.Nucleo.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Simansoft.SiGestao.Nucleo.Tests/Simansoft.SiGestao.Nucleo.Tests.csproj" />
+  </Folder>
+</Solution>

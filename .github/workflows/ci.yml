@@ -35,7 +35,7 @@ jobs:
         run: dotnet test --no-build -c Release --coverlet --coverlet-output-format cobertura
       - name: Guardar cobertura
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: cobertura
           path: '**/TestResults/coverage.cobertura.*.xml'
